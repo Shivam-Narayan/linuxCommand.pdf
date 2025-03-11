@@ -163,4 +163,4 @@ Contributions welcome! 🎉 Please open an issue or submit a pull request for im
 
 ## License
 This project is licensed under the MIT License.  
-Copyright © 2023 [Your Name]
+Copyright © 2023 [Shivam Narayan]
