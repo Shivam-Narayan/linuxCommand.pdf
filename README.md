@@ -175,6 +175,6 @@ Contributions are always welcome! 🎉 Please open an issue or submit a pull req
 
 ## 📜 **License**
 This project is licensed under the **MIT License**.  
-Copyright © 2023 [Shivam Narayan](https://github.com/yourusername)
+Copyright © 2023 [Shivam Narayan](https://github.com/Shivam-Narayan)
 
 ---
