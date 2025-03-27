@@ -1,4 +1,4 @@
-# Ubuntu Guide
+## 📋 Ubuntu Guide
 
 ---
 
@@ -34,7 +34,7 @@ Ubuntu has different versions catering to various needs:
 ---
 
 
-## Basic Linux Commands
+## Basic Linux Commands 
 
 ### 1. `pwd` – Print current working directory
 ```sh
@@ -304,7 +304,7 @@ man ls
 ```
 
 ---
-# File Permissions and Ownership in Linux
+# 📂 **File Permissions and Ownership in Linux** 
 
 Linux provides a powerful permission system to control access to files and directories. Below are essential commands related to file permissions and ownership, along with examples.
 
@@ -475,7 +475,7 @@ ls -ld /var/www
 *Displays permission settings for the directory.*
 
 ---
-# User Management Commands in Linux
+# 📊 **User Management and system Monitoring Commands in Linux**
 
 ## Overview
 User management is an essential aspect of Linux system administration. Below is a list of common user management commands along with examples to help you manage users efficiently.
@@ -632,7 +632,7 @@ sudo apt update
 
 ---
 
-# Networking Commands in Ubuntu
+# 🌐 **Network Commands in Ubuntu**
 
 This document provides a list of essential networking commands in Ubuntu along with their descriptions and examples.
 
