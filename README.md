@@ -303,17 +303,176 @@ time ls
 man ls
 ```
 
-### **File Permissions and Ownership Commands**
+---
+# File Permissions and Ownership in Linux
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `chmod 777 <file>` | Full permissions | `$ chmod 777 myscript.sh` |
-| `chmod 755 <file>` | Read & execute for all, write for owner | `$ chmod 755 script.sh` |
-| `chown user:group <file>` | Change file ownership | `$ chown john:dev team.txt` |
-| `ls -l` | View file permissions | `$ ls -l` |
-| `stat <file>` | Get detailed file information | `$ stat myfile.txt` |
-| `lsattr` | List file attributes | `$ lsattr` |
-| `setfacl -m u:user:rwx <file>` | Set ACL for a user | `$ setfacl -m u:john:rwx file.txt` |
+Linux provides a powerful permission system to control access to files and directories. Below are essential commands related to file permissions and ownership, along with examples.
+
+## 1. Changing File Permissions (`chmod`)
+
+### **1. `chmod 777 <file>` – Full permissions**
+```bash
+chmod 777 myfile.txt
+```
+*Gives read, write, and execute permissions to everyone.*
+
+### **2. `chmod 755 <file>` – Read & execute for all, write for owner**
+```bash
+chmod 755 script.sh
+```
+*Owner has full permissions, others can only read and execute.*
+
+### **3. `chmod u+x <file>` – Add execute permission to the user**
+```bash
+chmod u+x run.sh
+```
+*Makes the file executable for the owner.*
+
+## 2. Changing Ownership (`chown` and `chgrp`)
+
+### **4. `chown user:group <file>` – Change file ownership**
+```bash
+chown alice:developers report.txt
+```
+*Changes owner to Alice and group to developers.*
+
+### **5. `chgrp group <file>` – Change group ownership**
+```bash
+chgrp staff document.docx
+```
+*Assigns the file to the 'staff' group.*
+
+## 3. Viewing and Finding File Permissions
+
+### **6. `ls -l` – View file permissions**
+```bash
+ls -l myfile.txt
+```
+*Displays detailed file information, including permissions.*
+
+### **7. `umask 022` – Default permission setting**
+```bash
+umask 022
+```
+*Sets default permissions for new files and directories.*
+
+### **8. `find /path -type f -perm 777` – Find files with 777 permission**
+```bash
+find /home/user -type f -perm 777
+```
+*Searches for files with full access in the specified directory.*
+
+## 4. Modifying Permissions
+
+### **9. `chmod +r <file>` – Add read permission**
+```bash
+chmod +r notes.txt
+```
+*Makes the file readable for everyone.*
+
+### **10. `chmod +w <file>` – Add write permission**
+```bash
+chmod +w log.txt
+```
+*Allows write access to all users.*
+
+### **11. `chmod +x <file>` – Add execute permission**
+```bash
+chmod +x script.sh
+```
+*Makes the script executable.*
+
+### **12. `chmod -r <file>` – Remove read permission**
+```bash
+chmod -r private.txt
+```
+*Prevents users from reading the file.*
+
+### **13. `chmod -w <file>` – Remove write permission**
+```bash
+chmod -w report.docx
+```
+*Prevents modifications to the file.*
+
+### **14. `chmod -x <file>` – Remove execute permission**
+```bash
+chmod -x program.bin
+```
+*Prevents execution of the file.*
+
+## 5. Managing File Attributes (`lsattr` and `chattr`)
+
+### **15. `lsattr` – List file attributes**
+```bash
+lsattr myfile.txt
+```
+*Displays special file attributes.*
+
+### **16. `chattr +i <file>` – Make a file immutable**
+```bash
+chattr +i config.cfg
+```
+*Prevents the file from being modified or deleted.*
+
+### **17. `chattr -i <file>` – Remove immutability**
+```bash
+chattr -i config.cfg
+```
+*Allows modifications to the file again.*
+
+### **18. `chattr +a <file>` – Append only**
+```bash
+chattr +a log.txt
+```
+*Only allows appending to the file.*
+
+### **19. `chattr -a <file>` – Remove append-only**
+```bash
+chattr -a log.txt
+```
+*Allows full modifications to the file.*
+
+## 6. Getting File Information
+
+### **20. `stat <file>` – Get detailed file information**
+```bash
+stat report.pdf
+```
+*Displays metadata about the file.*
+
+### **21. `getfacl <file>` – Get Access Control List (ACL)**
+```bash
+getfacl shared.txt
+```
+*Shows ACL permissions for the file.*
+
+## 7. Modifying Access Control Lists (ACL)
+
+### **22. `setfacl -m u:user:rwx <file>` – Set ACL for a user**
+```bash
+setfacl -m u:john:rwx project.doc
+```
+*Gives John full permissions on the file.*
+
+### **23. `setfacl -x u:user <file>` – Remove ACL for a user**
+```bash
+setfacl -x u:john project.doc
+```
+*Removes John's special access.*
+
+### **24. `setfacl -b <file>` – Remove all ACL entries**
+```bash
+setfacl -b shared.txt
+```
+*Clears all ACL settings on the file.*
+
+## 8. Viewing Directory Permissions
+
+### **25. `ls -ld <directory>` – View directory permissions**
+```bash
+ls -ld /var/www
+```
+*Displays permission settings for the directory.*
 
 ---
 
