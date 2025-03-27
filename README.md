@@ -34,7 +34,7 @@ Ubuntu has different versions catering to various needs:
 ---
 
 
-## Basic Linux Commands 
+## 🖥️ **Basic Linux Commands** 
 
 ### 1. `pwd` – Print current working directory
 ```sh
