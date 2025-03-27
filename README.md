@@ -475,37 +475,307 @@ ls -ld /var/www
 *Displays permission settings for the directory.*
 
 ---
+# User Management Commands in Linux
 
-### **User Management Commands**
+## Overview
+User management is an essential aspect of Linux system administration. Below is a list of common user management commands along with examples to help you manage users efficiently.
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `whoami` | Show current user | `$ whoami` → `user` |
-| `id` | Display user ID | `$ id` |
-| `who` | Show all logged-in users | `$ who` |
-| `adduser <username>` | Create a new user | `$ adduser john` |
-| `passwd <username>` | Set a user's password | `$ passwd john` |
-| `deluser <username>` | Delete a user | `$ deluser john` |
-| `groupadd <groupname>` | Create a new group | `$ groupadd developers` |
-| `groups <username>` | Show user groups | `$ groups john` |
-| `su <username>` | Switch user | `$ su john` |
-| `sudo su` | Switch to root | `$ sudo su` |
+## Commands and Examples
+
+### 1. `whoami` - Show current user
+```bash
+whoami
+```
+*Output:*
+```
+user123
+```
+
+### 2. `id` - Display user ID and group ID
+```bash
+id
+```
+*Output:*
+```
+uid=1000(user123) gid=1000(user123) groups=1000(user123),27(sudo)
+```
+
+### 3. `who` - Show all logged-in users
+```bash
+who
+```
+*Output:*
+```
+user1  tty1  2025-03-27 09:00
+user2  pts/0  2025-03-27 09:15
+```
+
+### 4. `w` - Show user activity
+```bash
+w
+```
+*Output:*
+```
+10:00:01 up 1:00, 2 users, load average: 0.12, 0.15, 0.10
+USER     TTY      FROM            LOGIN@   IDLE   JCPU   PCPU WHAT
+user1    tty1     :0             09:00    1:00m   0.02s  0.01s bash
+```
+
+### 5. `adduser <username>` - Create a new user
+```bash
+sudo adduser newuser
+```
+
+### 6. `passwd <username>` - Set a user's password
+```bash
+sudo passwd newuser
+```
+
+### 7. `deluser <username>` - Delete a user
+```bash
+sudo deluser newuser
+```
+
+### 8. `usermod -aG <group> <username>` - Add a user to a group
+```bash
+sudo usermod -aG sudo newuser
+```
+
+### 9. `groups <username>` - Show user groups
+```bash
+groups newuser
+```
+
+### 10. `groupadd <groupname>` - Create a new group
+```bash
+sudo groupadd developers
+```
+
+### 11. `groupdel <groupname>` - Delete a group
+```bash
+sudo groupdel developers
+```
+
+### 12. `chage -l <username>` - Show password expiry info
+```bash
+sudo chage -l newuser
+```
+
+### 13. `chage -M 30 <username>` - Set password expiry
+```bash
+sudo chage -M 30 newuser
+```
+
+### 14. `su <username>` - Switch user
+```bash
+su - newuser
+```
+
+### 15. `sudo su` - Switch to root user
+```bash
+sudo su
+```
+
+### 16. `sudo -i` - Open an interactive root shell
+```bash
+sudo -i
+```
+
+### 17. `who -b` - Show last system reboot
+```bash
+who -b
+```
+*Output:*
+```
+boot   2025-03-27 08:30
+```
+
+### 18. `finger <username>` - Display user information
+```bash
+finger newuser
+```
+
+### 19. `last` - Show last logins
+```bash
+last
+```
+
+### 20. `lastlog` - Show last login for all users
+```bash
+lastlog
+```
+
+### 21. `pkill -u <username>` - Kill all processes of a user
+```bash
+sudo pkill -u newuser
+```
+
+### 22. `w -s` - Show short version of active users
+```bash
+w -s
+```
+
+### 23. `who -r` - Show current runlevel
+```bash
+who -r
+```
+
+### 24. `who -q` - Show total logged-in users
+```bash
+who -q
+```
+
+### 25. `sudo <command>` - Execute commands as root
+```bash
+sudo apt update
+```
 
 ---
 
-### **Networking Commands**
+# Networking Commands in Ubuntu
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `ping <host>` | Check connectivity | `$ ping google.com` |
-| `traceroute <host>` | Trace route to a host | `$ traceroute google.com` |
-| `nslookup <host>` | DNS lookup | `$ nslookup google.com` |
-| `curl -I <URL>` | Fetch HTTP headers | `$ curl -I https://example.com` |
-| `wget <URL>` | Download a file | `$ wget https://example.com/file.zip` |
-| `netstat -tulnp` | Show open ports | `$ netstat -tulnp` |
-| `ip addr show` | Show IP addresses | `$ ip addr show` |
-| `hostname -I` | Show IP address | `$ hostname -I` |
+This document provides a list of essential networking commands in Ubuntu along with their descriptions and examples.
 
+## 1. `ping` - Check Connectivity
+Used to check if a remote host is reachable.
+```bash
+ping google.com
+```
+Example Output:
+```
+PING google.com (142.250.180.78) 56(84) bytes of data.
+64 bytes from 142.250.180.78: icmp_seq=1 ttl=118 time=10.2 ms
+```
+
+## 2. `traceroute` - Trace Route to a Host
+Displays the path packets take to a host.
+```bash
+traceroute google.com
+```
+Example Output:
+```
+traceroute to google.com (142.250.180.78), 30 hops max, 60 byte packets
+1 192.168.1.1 (192.168.1.1) 2.502 ms 2.301 ms 2.113 ms
+2 10.10.10.1 (10.10.10.1) 10.512 ms 10.222 ms 10.435 ms
+...
+```
+
+## 3. `nslookup` - DNS Lookup
+Used to query DNS records for a domain.
+```bash
+nslookup google.com
+```
+Example Output:
+```
+Server:  8.8.8.8
+Address: 8.8.8.8#53
+Non-authoritative answer:
+Name: google.com
+Address: 142.250.180.78
+```
+
+## 4. `dig` - Get DNS Information
+Fetch detailed DNS information for a domain.
+```bash
+dig google.com
+```
+Example Output:
+```
+;; ANSWER SECTION:
+google.com.   299 IN A 142.250.180.78
+```
+
+## 5. `host` - Find IP of a Domain
+Find the IP address associated with a domain.
+```bash
+host google.com
+```
+Example Output:
+```
+google.com has address 142.250.180.78
+```
+
+## 6. `wget` - Download a File
+Download a file from a URL.
+```bash
+wget https://example.com/file.zip
+```
+Example Output:
+```
+Saving to: ‘file.zip’
+```
+
+## 7. `curl` - Fetch HTTP Headers
+Retrieve HTTP headers from a website.
+```bash
+curl -I https://example.com
+```
+Example Output:
+```
+HTTP/1.1 200 OK
+Date: Mon, 25 Mar 2025 12:00:00 GMT
+```
+
+## 8. `scp` - Secure Copy
+Copy files securely between hosts.
+```bash
+scp user@remote:/path/to/file /local/destination
+```
+Example Output:
+```
+file 100% 10MB 10MB/s 00:01
+```
+
+## 9. `rsync` - Sync Files
+Efficiently sync files between directories or hosts.
+```bash
+rsync -avz /source/ user@remote:/destination/
+```
+Example Output:
+```
+sending incremental file list
+document.pdf
+```
+
+## 10. `netstat` - Show Open Ports
+Displays active network connections and open ports.
+```bash
+netstat -tulnp
+```
+Example Output:
+```
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+```
+
+## 11. `ss` - Display Active Connections
+Show active sockets and connections.
+```bash
+ss -tulnp
+```
+Example Output:
+```
+Netid  State    Recv-Q Send-Q Local Address:Port Peer Address:Port
+```
+
+## 12. `ifconfig` - Show Network Interfaces
+List available network interfaces.
+```bash
+ifconfig
+```
+Example Output:
+```
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+```
+
+## 13. `ip addr show` - Show IP Addresses
+Display assigned IP addresses.
+```bash
+ip addr show
+```
+Example Output:
+```
+inet 192.168.1.10/24 brd 192.168.1.255 scope global eth0
+```
 ---
 
 ## Conclusion
